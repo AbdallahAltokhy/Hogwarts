@@ -2,7 +2,7 @@
 
 👷🏻‍♂️ Tool to connect handy technician with customers
 
-![](./APP-Snaps/Hogwarts.png)
+![](./APP-Screenshots/Hogwarts.png)
 
 Hogwarts is an app to connect handy technician with customers, where customers can see a list of services, book one and Pay for it all in one place. Also, the app provided an admin dashboard for the business owner, where he can keep track of all orders, customers, technician with a privileges to add, update and remove services and technicians .
 
@@ -44,7 +44,7 @@ For the app full experience check below :
 
   - pay for the booked services using this fake test card number "4242 4242 4242 4242"
 
-    ![](./APP-Snaps/User.png)
+    ![](./APP-Screenshots/User.png)
 
 - <u>For the Admin experience</u>
 
@@ -61,7 +61,7 @@ For the app full experience check below :
 
     - See a list of all technicians, add,update or delete one as well
 
-      ![](./APP-Snaps/Admin.png)
+      ![](./APP-Screenshots/Admin.png)
 
 ## Tech stack
 
