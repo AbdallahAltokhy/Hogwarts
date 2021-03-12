@@ -4,7 +4,7 @@
 
 ![](./APP-Screenshots/Hogwarts.png)
 
-Hogwarts is an app to connect handy technician with customers, where customers can see a list of services, book one and Pay for it all in one place. Also, the app provided an admin dashboard for the business owner, where he can keep track of all orders, customers, technician with a privileges to add, update and remove services and technicians .
+Hogwarts is an app to connect customers with handy technicians , where customers can see a list of services, book one and Pay for it all in one place. Also, the app provided an admin dashboard for the business owner, where he can keep track of all orders, customers, technician with a privileges to add, update and remove services and technicians .
 
 ## Getting started
 
@@ -12,7 +12,7 @@ Hogwarts is an app to connect handy technician with customers, where customers c
 
    `git clone https://github.com/AbdallahAltokhy/Hogwarts.git`
 
-2. From the project root file
+2. From the project root file, go to the client folder and install dependencies
 
    `cd client`
 
@@ -20,7 +20,7 @@ Hogwarts is an app to connect handy technician with customers, where customers c
 
    `npm start`
 
-3. From the project root file
+3. From a seperate terminal,go to the server folder and install dependencies 
 
    `cd server`
 
@@ -28,7 +28,7 @@ Hogwarts is an app to connect handy technician with customers, where customers c
 
    `nodemon app.js`
 
-4. setup a MySQL Database
+4. Install and run a local database and fill in a `.env` file with your system parameters. A `.envCopy` file is provided in the server folder for guidence .
 
 5. Let The Magic Happen ✨!
 
@@ -87,4 +87,4 @@ For the app full experience check below :
 
 ## License
 
-MIT © [Stefan Huckschlag](https://github.com/hucki)
+MIT © [Abdallah Altokhy](https://github.com/AbdallahAltokhy)
