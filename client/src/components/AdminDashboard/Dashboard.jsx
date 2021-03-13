@@ -19,12 +19,7 @@ import DashboardHome from './Dashboard-Home/DashboardHome';
 import DashboardTechnician from './Dashboard-Technicians/DashboardTechnicians';
 import DashboardCustomer from './Dashboard-Customers/DashboardCustomer';
 import DashboardService from './Dashboard Services/DashboardServices';
-import {
-	postService,
-	getServices,
-	updateServiceList,
-	deleteService,
-} from '../../Services/ServicesService';
+import { getServices } from '../../Services/ServicesService';
 
 import { getCustomers } from '../../Services/customersService';
 import {
@@ -102,8 +97,6 @@ export default function Dashboard({ orders, totalCost, logOut }) {
 		getCustomers().then((res) => setCustomers(res));
 		getTechnicians().then((res) => setTechnicians(res));
 	}, []);
-
-	console.log(technicians);
 
 	const params = useParams();
 	const dashRouter = (params) => {
