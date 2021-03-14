@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import { useForm } from 'react-hook-form';
-
+import './DashboardServices.css';
 import {
 	postService,
 	updateServiceList,
 	deleteService,
 } from '../../../Services/ServicesService';
-import './DashboardServices.css';
 
 const DashboardService = ({ services }) => {
 	//Dialog Functions
@@ -39,7 +38,8 @@ const DashboardService = ({ services }) => {
 		setUpdateOpen(false);
 	};
 
-	//Form Hook functions
+	//Handle Add and Update functions
+
 	const { register, handleSubmit } = useForm();
 
 	const onAddSubmit = (data) => {
@@ -119,7 +119,7 @@ const DashboardService = ({ services }) => {
 						id="name"
 						name="name"
 						label="Service Name"
-						type="name"
+						type="text"
 						inputRef={register}
 						fullWidth
 					/>

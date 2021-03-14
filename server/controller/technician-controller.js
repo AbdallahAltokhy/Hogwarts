@@ -24,6 +24,21 @@ const getAllTechnicians = async (req, res) => {
 
 };
 
+const updateTechnician = async (req, res) => {
+  try {
+    const { name, phone, email } = req.body;
+    await Technician.update({ name, phone, email }, {
+      where: {
+        id: req.params.id
+      }
+    });
+
+    res.status(200).send('Technician Updated');
+  } catch (error) {
+    res.status(400).send(error.errors[0].message);
+  }
+
+};
 
 const deleteTechnician = async (req, res) => {
   try {
@@ -41,5 +56,5 @@ const deleteTechnician = async (req, res) => {
 };
 
 
-module.exports = { addTechnician, getAllTechnicians, deleteTechnician };
+module.exports = { addTechnician, getAllTechnicians, updateTechnician, deleteTechnician };
 

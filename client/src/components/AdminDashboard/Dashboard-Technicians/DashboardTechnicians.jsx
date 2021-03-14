@@ -1,8 +1,64 @@
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
+import {
+	postTechnician,
+	updateTechnicianList,
+	deleteTechnician,
+} from '../../../Services/techniciansService';
+
 const DashboardTechnician = ({ technicians }) => {
+	//Dialog Functions
+	const [open, setOpen] = useState(false);
+	const [addOpen, setAddOpen] = useState(false);
+	const [updateOpen, setUpdateOpen] = useState(false);
+	const [technicianId, setTechnicianId] = useState(null);
+
+	const addHandleClickOpen = () => {
+		setOpen(true);
+		setAddOpen(true);
+		setUpdateOpen(false);
+	};
+	const updateHandleClickOpen = (id) => {
+		setTechnicianId(id);
+		setOpen(true);
+		setUpdateOpen(true);
+		setAddOpen(false);
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+		setAddOpen(false);
+		setUpdateOpen(false);
+	};
+
+	//Handle Add and Update functions
+
+	const { register, handleSubmit } = useForm();
+
+	const onAddSubmit = (data) => {
+		postTechnician(data.name, data.phone, data.email);
+		handleClose();
+		// window.location = '/admin/technician';
+	};
+
+	const onUpdateSubmit = (data) => {
+		console.log(data);
+		updateTechnicianList(technicianId, data.name, data.phone, data.email);
+		handleClose();
+		setTechnicianId(null);
+		window.location = '/admin/technician';
+	};
+
 	return (
 		<div className="container">
 			<button
-				onClick={() => console.log('Clicked')}
+				onClick={addHandleClickOpen}
 				className="btn btn-primary btn-block add-btn"
 			>
 				Add a Technician
@@ -28,7 +84,7 @@ const DashboardTechnician = ({ technicians }) => {
 								<td>{technician.email}</td>
 								<td>
 									<button
-										onClick={() => console.log('Clicked')}
+										onClick={() => updateHandleClickOpen(technician.id)}
 										className="btn btn-warning btn-bg"
 									>
 										Update
@@ -36,7 +92,10 @@ const DashboardTechnician = ({ technicians }) => {
 								</td>
 								<td>
 									<button
-										onClick={() => console.log('Clicked')}
+										onClick={() => {
+											deleteTechnician(technician.id);
+											window.location = '/admin/technician';
+										}}
 										className="btn btn-danger btn-bg"
 									>
 										Delete
@@ -56,6 +115,64 @@ const DashboardTechnician = ({ technicians }) => {
 					)}
 				</tbody>
 			</table>
+			<Dialog
+				open={open}
+				onClose={handleClose}
+				addOpen={addOpen}
+				updateOpen={updateOpen}
+			>
+				{addOpen ? (
+					<DialogTitle id="form-dialog-title">Add New Technician</DialogTitle>
+				) : (
+					<DialogTitle id="form-dialog-title">Update Technician</DialogTitle>
+				)}
+				<DialogContent>
+					<TextField
+						autoFocus
+						margin="dense"
+						id="name"
+						name="name"
+						label="Technician Name"
+						type="text"
+						inputRef={register}
+						fullWidth
+					/>
+					<TextField
+						autoFocus
+						margin="dense"
+						id="phone"
+						name="phone"
+						label="Technician Phone"
+						type="text"
+						inputRef={register}
+						fullWidth
+					/>
+					<TextField
+						autoFocus
+						margin="dense"
+						id="email"
+						name="email"
+						label="Technician Email"
+						type="email"
+						inputRef={register}
+						fullWidth
+					/>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleClose} color="primary">
+						Cancel
+					</Button>
+					{addOpen ? (
+						<Button onClick={handleSubmit(onAddSubmit)} color="primary">
+							Add
+						</Button>
+					) : (
+						<Button onClick={handleSubmit(onUpdateSubmit)} color="primary">
+							update
+						</Button>
+					)}
+				</DialogActions>
+			</Dialog>
 		</div>
 	);
 };

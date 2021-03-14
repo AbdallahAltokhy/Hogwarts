@@ -19,14 +19,10 @@ import DashboardHome from './Dashboard-Home/DashboardHome';
 import DashboardTechnician from './Dashboard-Technicians/DashboardTechnicians';
 import DashboardCustomer from './Dashboard-Customers/DashboardCustomer';
 import DashboardService from './Dashboard Services/DashboardServices';
-import { getServices } from '../../Services/ServicesService';
 
+import { getServices } from '../../Services/ServicesService';
 import { getCustomers } from '../../Services/customersService';
-import {
-	postTechnician,
-	getTechnicians,
-	deleteTechnician,
-} from '../../Services/techniciansService';
+import { getTechnicians } from '../../Services/techniciansService';
 
 const drawerWidth = 240;
 
