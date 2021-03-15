@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Router } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 import jwt_decode from 'jwt-decode';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -56,6 +56,16 @@ const App = () => {
 		</div>
 	);
 
+	const PrivateRoute = ({ as: Component, ...props }) => {
+		return Object.keys(user).length !== 0 && user.id === 44 ? (
+			<Component {...props} />
+		) : (
+			<Layout>
+				<Home user={user} path="/" />
+			</Layout>
+		);
+	};
+
 	return (
 		<>
 			<ToastContainer />
@@ -67,13 +77,23 @@ const App = () => {
 					<Checkout path="/checkout" user={user} />
 					<Profile path="/profile" />
 				</Layout>
-				<Dashboard
+
+				<PrivateRoute
+					as={Dashboard}
 					path="/admin/:dashboard"
 					user={user}
 					orders={orders}
 					totalCost={totalCost}
 					logOut={logOut}
 				/>
+
+				{/* <Dashboard
+					path="/admin/:dashboard"
+					user={user}
+					orders={orders}
+					totalCost={totalCost}
+					logOut={logOut}
+				/> */}
 			</Router>
 		</>
 	);
