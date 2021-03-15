@@ -44,7 +44,7 @@ const DashboardTechnician = ({ technicians }) => {
 	const onAddSubmit = (data) => {
 		postTechnician(data.name, data.phone, data.email);
 		handleClose();
-		// window.location = '/admin/technician';
+		window.location = '/admin/technician';
 	};
 
 	const onUpdateSubmit = (data) => {
@@ -63,58 +63,57 @@ const DashboardTechnician = ({ technicians }) => {
 			>
 				Add a Technician
 			</button>
-			<table className="table table-responsive table-dash">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					{technicians.length !== 0 ? (
-						technicians.map((technician) => (
-							<tr key={technician.id}>
-								<td>{technician.id}</td>
-								<td>{technician.name}</td>
-								<td>{technician.phone}</td>
-								<td>{technician.email}</td>
-								<td>
-									<button
-										onClick={() => updateHandleClickOpen(technician.id)}
-										className="btn btn-warning btn-bg"
-									>
-										Update
-									</button>
-								</td>
-								<td>
-									<button
-										onClick={() => {
-											deleteTechnician(technician.id);
-											window.location = '/admin/technician';
-										}}
-										className="btn btn-danger btn-bg"
-									>
-										Delete
-									</button>
-								</td>
-							</tr>
-						))
-					) : (
+			<div className="table-responsive ">
+				<table className="table table-hover">
+					<thead>
 						<tr>
-							<td>.</td>
-							<td>.</td>
-							<td>.</td>
-							<td>.</td>
-							<td>.</td>
-							<td>.</td>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Phone</th>
+							<th>Email</th>
+							<th></th>
 						</tr>
-					)}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{technicians.length !== 0 ? (
+							technicians.map((technician) => (
+								<tr key={technician.id}>
+									<td>{technician.id}</td>
+									<td>{technician.name}</td>
+									<td>{technician.phone}</td>
+									<td>{technician.email}</td>
+									<td>
+										<button
+											onClick={() => updateHandleClickOpen(technician.id)}
+											className="btn btn-warning btn-bg ml-4"
+										>
+											Update
+										</button>
+										<button
+											onClick={() => {
+												deleteTechnician(technician.id);
+												window.location = '/admin/technician';
+											}}
+											className="btn btn-danger btn-bg ml-4"
+										>
+											Delete
+										</button>
+									</td>
+								</tr>
+							))
+						) : (
+							<tr>
+								<td>.</td>
+								<td>.</td>
+								<td>.</td>
+								<td>.</td>
+								<td>.</td>
+								<td>.</td>
+							</tr>
+						)}
+					</tbody>
+				</table>
+			</div>
 			<Dialog
 				open={open}
 				onClose={handleClose}
@@ -138,7 +137,6 @@ const DashboardTechnician = ({ technicians }) => {
 						fullWidth
 					/>
 					<TextField
-						autoFocus
 						margin="dense"
 						id="phone"
 						name="phone"
@@ -148,7 +146,6 @@ const DashboardTechnician = ({ technicians }) => {
 						fullWidth
 					/>
 					<TextField
-						autoFocus
 						margin="dense"
 						id="email"
 						name="email"

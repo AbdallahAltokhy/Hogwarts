@@ -1,7 +1,7 @@
 const DashboardCustomer = ({ customers }) => {
 	return (
-		<div className="container">
-			<table className="table table-responsive table-dash">
+		<div className="container table-responsive">
+			<table className="table  table-dash table-hover">
 				<thead>
 					<tr>
 						<th>Id</th>

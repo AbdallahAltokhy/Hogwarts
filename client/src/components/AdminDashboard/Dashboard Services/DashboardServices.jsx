@@ -64,43 +64,42 @@ const DashboardService = ({ services }) => {
 			>
 				Add a Service
 			</button>
-			<table className="table table-responsive table-dash">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					{services.map((service) => (
-						<tr key={service.id}>
-							<td>{service.id}</td>
-							<td>{service.name}</td>
-							<td>
-								<button
-									onClick={() => updateHandleClickOpen(service.id)}
-									className="btn btn-warning btn-bg"
-								>
-									Update
-								</button>
-							</td>
-							<td>
-								<button
-									onClick={() => {
-										deleteService(service.id);
-										window.location = '/admin/Services';
-									}}
-									className="btn btn-danger btn-bg"
-								>
-									Delete
-								</button>
-							</td>
+			<div className="table-responsive ">
+				<table className="table table-hover ">
+					<thead>
+						<tr>
+							<th className="text-center">Id</th>
+							<th className="text-center">Name</th>
+							<th></th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{services.map((service) => (
+							<tr key={service.id}>
+								<td className="text-center">{service.id}</td>
+								<td className="text-center">{service.name}</td>
+								<td>
+									<button
+										onClick={() => updateHandleClickOpen(service.id)}
+										className="btn btn-warning btn-bg ml-4 "
+									>
+										Update
+									</button>
+									<button
+										onClick={() => {
+											deleteService(service.id);
+											window.location = '/admin/Services';
+										}}
+										className="btn btn-danger btn-bg ml-4"
+									>
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 			<Dialog
 				open={open}
 				onClose={handleClose}

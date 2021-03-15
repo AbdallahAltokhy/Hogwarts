@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -38,12 +39,16 @@ export default function Orders({ orders }) {
 					{Object.keys(orders).length !== 0 ? (
 						orders.map((order) => (
 							<TableRow key={order.id}>
-								<TableCell>{order.createdAt}</TableCell>
 								<TableCell>
-									{order.Customer ? order.Customer.name : 1}
+									{moment(order.createdAt).format('MMM Do YY')}
 								</TableCell>
 								<TableCell>
-									{order.Technician ? order.Technician.name : 1}
+									{order.Customer
+										? order.Customer.name
+										: 'Un registered Customer'}
+								</TableCell>
+								<TableCell>
+									{order.Technician ? order.Technician.name : ''}
 								</TableCell>
 								<TableCell>{order.paymentMethod}</TableCell>
 								<TableCell align="right">{order.cost}</TableCell>
