@@ -23,7 +23,6 @@ const registerUser = async (req, res) => {
   } catch (error) {
     res.status(400).send(error);
   }
-
 };
 
 
@@ -34,7 +33,6 @@ const getCustomerById = async (req, res) => {
     const customer = await Customer.findAll({ where: { id } });
     res.status(200).send(customer);
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 };
@@ -45,7 +43,6 @@ const getAllCustomers = async (req, res) => {
     const customer = await Customer.findAll({ include: { all: true, nested: true } });
     res.status(200).send(customer);
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 };

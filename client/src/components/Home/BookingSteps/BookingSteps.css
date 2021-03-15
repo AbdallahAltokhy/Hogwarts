@@ -2,16 +2,13 @@
   padding: 8% 0 ;
   margin: 60px auto;
   background-color: #F4F7FE;  
-
 }
 
 .booking-steps-heading{
   margin: 40px auto 60px auto;
   text-align: center;
   transition: .8s ease-in-out;
-
 }
-
 
 .booking-steps-heading:hover{text-decoration: underline;
   -webkit-text-decoration-color: #5F4DEE;

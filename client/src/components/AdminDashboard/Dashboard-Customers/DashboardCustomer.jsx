@@ -31,7 +31,4 @@ const DashboardCustomer = ({ customers }) => {
 	);
 };
 
-// let total = customer.orders.reduce((total, order) => {
-// 	return total + +order.cost;
-// }, 0);
 export default DashboardCustomer;

@@ -8,16 +8,24 @@ const addCustomer = (name, phone, email, password, location) => {
 };
 
 
-const getCustomers = async (name, phone, email, password, location) => {
-  let servicesList;
+const getCustomers = async () => {
+  let customerList;
   await axios('http://localhost:4000/customers').then(res => {
-    servicesList = res.data;
+    customerList = res.data;
   });
-  return servicesList;
+  return customerList;
+};
+
+const getCustomerById = async (id) => {
+  let currentCustomer;
+  await axios(`http://localhost:4000/customer/${id}`).then(res => {
+    currentCustomer = res.data;
+  });
+  return currentCustomer;
 };
 
 
 
-module.exports = { addCustomer, getCustomers };
+module.exports = { addCustomer, getCustomers, getCustomerById };
 
 

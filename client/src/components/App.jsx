@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Router, Redirect } from '@reach/router';
+import { Router } from '@reach/router';
 import jwt_decode from 'jwt-decode';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,36 +11,20 @@ import Login from './LogIn/Login';
 import SignUp from './SignUp/SignUp';
 import Profile from './Profile/Profile';
 import Dashboard from './AdminDashboard/Dashboard';
-const axios = require('axios');
+import { getCustomerById } from '../Services/customersService';
 
 const App = () => {
-	const [orders, setOrders] = useState([]);
-	let [totalCost, setTotalCost] = useState(0);
-
-	//getting the logged in user if exist
 	const [user, setUser] = useState({});
+
 	useEffect(() => {
+		//getting the logged in user if exist
 		const jwt = localStorage.getItem('token');
 		if (jwt) {
-			axios(
-				`http://localhost:4000/customer/${jwt_decode(jwt).id}`,
-			).then((res) => setUser(res.data[0]));
+			getCustomerById(jwt_decode(jwt).id).then((res) => {
+				setUser(res[0]);
+			});
 		}
-		//getting a list of all orders to pass it to Dashboard
-		axios('http://localhost:4000/orders').then((res) => {
-			setOrders(res.data);
-		});
 	}, []);
-
-	//getting the total cost of all orders to pass it to Dashboard
-	useEffect(() => {
-		if (orders.length !== 0) {
-			let total = orders.reduce((total, order) => {
-				return total + +order.cost;
-			}, 0);
-			setTotalCost(total);
-		}
-	}, [orders]);
 
 	//logging out a user
 	const logOut = () => {
@@ -82,18 +66,8 @@ const App = () => {
 					as={Dashboard}
 					path="/admin/:dashboard"
 					user={user}
-					orders={orders}
-					totalCost={totalCost}
 					logOut={logOut}
 				/>
-
-				{/* <Dashboard
-					path="/admin/:dashboard"
-					user={user}
-					orders={orders}
-					totalCost={totalCost}
-					logOut={logOut}
-				/> */}
 			</Router>
 		</>
 	);

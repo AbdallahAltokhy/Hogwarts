@@ -8,7 +8,6 @@ const addOrder = async (req, res) => {
     const order = await Order.create({ cost, paymentMethod, TechnicianId, CustomerId, serviceID });
     return res.status(201).send(order);
   } catch (error) {
-    console.log(error);
     return res.status(400).send(error.errors[0].message);
   }
 };
@@ -24,7 +23,6 @@ const getAllOrders = async (req, res) => {
   }
 
 };
-
 
 
 module.exports = { addOrder, getAllOrders };

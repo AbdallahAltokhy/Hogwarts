@@ -1,6 +1,6 @@
+import { Link } from '@reach/router';
 import './Nav.css';
 import imgSrc from './imgs/Icon.png';
-import { Link } from '@reach/router';
 
 const Nav = ({ user, logOut }) => {
 	return (

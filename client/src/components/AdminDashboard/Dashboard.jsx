@@ -14,7 +14,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useParams } from '@reach/router';
-
 import DashboardHome from './Dashboard-Home/DashboardHome';
 import DashboardTechnician from './Dashboard-Technicians/DashboardTechnicians';
 import DashboardCustomer from './Dashboard-Customers/DashboardCustomer';
@@ -23,6 +22,7 @@ import { mainListItems } from './listItems';
 import { getServices } from '../../Services/ServicesService';
 import { getCustomers } from '../../Services/customersService';
 import { getTechnicians } from '../../Services/techniciansService';
+import { getOrders } from '../../Services/orderService';
 
 const drawerWidth = 240;
 
@@ -83,16 +83,29 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-export default function Dashboard({ orders, totalCost, logOut }) {
+export default function Dashboard({ logOut }) {
 	const [services, setServices] = useState([]);
 	const [customers, setCustomers] = useState([]);
 	const [technicians, setTechnicians] = useState([]);
+	const [orders, setOrders] = useState([]);
+	const [totalCost, setTotalCost] = useState(0);
 
 	useEffect(() => {
 		getServices().then((res) => setServices(res));
 		getCustomers().then((res) => setCustomers(res));
 		getTechnicians().then((res) => setTechnicians(res));
+		getOrders().then((res) => setOrders(res));
 	}, []);
+
+	//getting the total cost of all orders to pass it to Dashboard
+	useEffect(() => {
+		if (orders.length !== 0) {
+			let total = orders.reduce((total, order) => {
+				return total + +order.cost;
+			}, 0);
+			setTotalCost(total);
+		}
+	}, [orders]);
 
 	const params = useParams();
 	const dashRouter = (params) => {

@@ -6,4 +6,19 @@ const postOrder = (cost, paymentMethod, TechnicianId, CustomerId, serviceID) => 
   });
 };
 
-export default postOrder;
+
+const getOrders = async () => {
+  try {
+    let ordersList;
+    await axios('http://localhost:4000/orders').then(res => {
+      ordersList = res.data;
+    });
+    return ordersList;
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+module.exports = { postOrder, getOrders };

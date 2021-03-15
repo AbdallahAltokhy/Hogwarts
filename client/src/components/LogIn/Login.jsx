@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from '@reach/router';
-import { verifyCustomer } from '../../Services/authService';
-import './Login.css';
-import img from './imgs/undraw_Nature_fun_re_iney.svg';
 import { toast } from 'react-toastify';
 import jwt_decode from 'jwt-decode';
+import './Login.css';
+import img from './imgs/undraw_Nature_fun_re_iney.svg';
+import verifyCustomer from '../../Services/authService';
 
 export default function Login({ user }) {
 	const { register, handleSubmit, errors } = useForm();

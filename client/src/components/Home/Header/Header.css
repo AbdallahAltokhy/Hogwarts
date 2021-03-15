@@ -8,9 +8,7 @@
 .header-txt-box{
   text-align: center;
   padding: 100px 0 ;
-
 }
-
 
 .header-txt-box h1{
   color: aliceblue;
@@ -27,7 +25,6 @@
   margin: auto;
   font-size: 1.1rem;
 }
-
 
 .header-txt-box button{
   border: 2px solid white;

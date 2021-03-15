@@ -9,8 +9,7 @@ const { addTechnician, getAllTechnicians, updateTechnician, deleteTechnician } =
 const { addService, getAllServices, updateService, deleteService } = require('./controller/services-controller');
 
 
-
-//Customers routers
+//Customers routes
 router.post('/signUp', registerUser);
 router.post('/login', auth);
 router.get('/customer/:id', getCustomerById);
@@ -36,10 +35,8 @@ router.put('/service/:id', updateService);
 router.delete('/service/:id', deleteService);
 
 
-
 //payment 
 router.post('/checkout', paymentApi);
-
 
 
 module.exports = router;

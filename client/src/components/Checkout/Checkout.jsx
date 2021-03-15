@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import Review from './Review';
 import Payment from './PaymentForm';
-import postOrder from '../../Services/orderService';
+import { postOrder } from '../../Services/orderService';
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -96,7 +96,6 @@ export default function Checkout({ user }) {
 	const [activeStep, setActiveStep] = React.useState(0);
 
 	const handleNext = () => {
-		console.log('I AM HANDLE NEXT');
 		setActiveStep(activeStep + 1);
 	};
 

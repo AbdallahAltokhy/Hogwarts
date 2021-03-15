@@ -19,7 +19,6 @@ const getTechnicians = async () => {
 
 const updateTechnicianList = async (id, name, phone, email) => {
   try {
-
     return await axios.put(`http://localhost:4000/technician/${id}`, { name, phone, email });
   } catch (error) {
     console.log(error);
@@ -31,7 +30,6 @@ const deleteTechnician = async (id) => {
     return await axios.delete(`http://localhost:4000/technician/${id}`);
   } catch (error) {
     console.log(error);
-
   }
 };
 

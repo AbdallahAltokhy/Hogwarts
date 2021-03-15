@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from '@reach/router';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { addCustomer } from '../../Services/customersService';
 import './SignUp.css';
 import img from './imgs/undraw_Relaxing_at_home_re_mror.svg';
+import { addCustomer } from '../../Services/customersService';
 
 export default function SignUp() {
 	const { register, handleSubmit, errors } = useForm();
@@ -18,7 +18,7 @@ export default function SignUp() {
 				password,
 				location,
 			);
-			console.log('response from signup react ==>', response);
+
 			localStorage.setItem('token', response.headers['x-auth-token']);
 			window.location = '/';
 		} catch (error) {

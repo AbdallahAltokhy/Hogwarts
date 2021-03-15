@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from '../Title';
@@ -24,7 +25,7 @@ export default function Deposits({ totalCost }) {
 				${totalCost}
 			</Typography>
 			<Typography color="textSecondary" className={classes.depositContext}>
-				{`${new Date().getDate()} /${new Date().getMonth()}/${new Date().getFullYear()}`}
+				{moment(Date()).format('Do MMM  YY')}
 			</Typography>
 		</div>
 	);

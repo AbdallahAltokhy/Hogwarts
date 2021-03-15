@@ -21,7 +21,6 @@ const getAllTechnicians = async (req, res) => {
   } catch (error) {
     res.status(400).send(error.errors[0].message);
   }
-
 };
 
 const updateTechnician = async (req, res) => {
@@ -32,7 +31,6 @@ const updateTechnician = async (req, res) => {
         id: req.params.id
       }
     });
-
     res.status(200).send('Technician Updated');
   } catch (error) {
     res.status(400).send(error.errors[0].message);
@@ -54,7 +52,6 @@ const deleteTechnician = async (req, res) => {
   }
 
 };
-
 
 module.exports = { addTechnician, getAllTechnicians, updateTechnician, deleteTechnician };
 

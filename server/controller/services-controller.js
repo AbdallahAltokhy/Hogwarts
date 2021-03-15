@@ -2,7 +2,6 @@ const { Service } = require('../model');
 
 
 const addService = async (req, res) => {
-
   try {
     let { name } = req.body;
     const service = await Service.create({ name });

@@ -10,4 +10,4 @@ const verifyCustomer = (email, password) => {
 
 };
 
-export { verifyCustomer };
+export default verifyCustomer;
