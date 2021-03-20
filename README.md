@@ -20,7 +20,7 @@ Hogwarts is an app to connect customers with handy technicians , where customers
 
    `npm start`
 
-3. From a seperate terminal,go to the server folder and install dependencies 
+3. From a separate terminal,go to the server folder and install dependencies
 
    `cd server`
 
@@ -28,13 +28,15 @@ Hogwarts is an app to connect customers with handy technicians , where customers
 
    `nodemon app.js`
 
-4. Install and run a local database and fill in a `.env` file with your system parameters. A `.envCopy` file is provided in the server folder for guidence .
+4. Install and run a local database and fill in a `.env` file with your system parameters. A `.envCopy` file is provided in the server folder for guidance .
 
 5. Let The Magic Happen ✨!
 
 ## Project orientation
 
 For the app full experience check below :
+
+​ App URL : https://hogwarts-services.herokuapp.com/
 
 - <u>For the customer experience</u>
 
